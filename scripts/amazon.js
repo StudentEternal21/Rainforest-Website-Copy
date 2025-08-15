@@ -3,6 +3,11 @@ import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
 
+
+updateCartQuantity();
+
+
+
 let productsHTML = '';
 products.forEach((product) => {
   productsHTML+= 
@@ -61,7 +66,6 @@ products.forEach((product) => {
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
 
-
 function updateCartQuantity() {
   let cartQuantity = 0;
 
@@ -70,6 +74,7 @@ function updateCartQuantity() {
   });
   document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
 }
+
 
  
  

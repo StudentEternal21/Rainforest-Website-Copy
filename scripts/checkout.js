@@ -2,6 +2,9 @@ import {cart, removeFromCart } from '../data/cart.js'
 import { products } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
+updateCartQuantity();
+
+
 let cartSummaryHTML = '';
 
 cart.forEach((cartItem) => {
@@ -105,6 +108,16 @@ document.querySelectorAll('.js-delete-link').forEach((link) => {
     const {productId} = link.dataset
     removeFromCart(productId);
     document.querySelector(`.js-cart-item-container-${productId}`).remove();
+    updateCartQuantity();
   });
 
 })
+
+function updateCartQuantity() {
+  let cartQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    cartQuantity+= cartItem.quantity;
+  });
+  document.querySelector('.js-cart-home-link').innerHTML = cartQuantity + ' items';
+}
