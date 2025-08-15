@@ -656,5 +656,99 @@
       "apparel",
       "mens"
     ]
-  }
+  },
+  {
+    "id": "bc2847e9-5323-403f-b7cf-57f7ugikhiutug",
+    "image": "images/products/men-seiko-5-sports-automatic.webp",
+    "name": "Men Seiko 5 Sports Automatic",
+    "rating": {
+      "stars": 4.7,
+      "count": 3000
+    },
+    "priceCents": 24000,
+    "keywords": [
+      "watch",
+      "seiko",
+      "apparel",
+      "mens"
+    ]
+  },
+  {
+    "id": "bc2697e9-5323-403f-b7cf-57f7ugifdi33ug",
+    "image": "images/products/logitech-m171-wireless-mouse.webp",
+    "name": "Logitech M171 Wireless Mouse",
+    "rating": {
+      "stars": 4.0,
+      "count": 800
+    },
+    "priceCents": 8000,
+    "keywords": [
+      "mouse",
+      "cute",
+      "computer",
+      "womens"
+    ]
+  },
+  {
+    "id": "did5597e9-5323-403f-b7cf-57f7n4keh3423",
+    "image": "images/products/panasonic-f-405lb.webp",
+    "name": "Panasonic F-405LB",
+    "rating": {
+      "stars": 5.0,
+      "count": 1200
+    },
+    "priceCents": 3313,
+    "keywords": [
+      "fan",
+      "appliances",
+      "home"
+    ]
+  },
+  {
+    "id": "dir5598x5-5323-403f-b7cf-57f7n4keh34wd23",
+    "image": "images/products/sandsberg-table-black-67x67-cm.webp",
+    "name": "SANDSBERG Table, Black 67x67 cm",
+    "rating": {
+      "stars": 3.0,
+      "count": 87
+    },
+    "priceCents": 3389,
+    "keywords": [
+      "table",
+      "home"
+    ]
+  },
+  {
+    "id": "dir8702-5323-403f-b7cf-57f7n4keh34wd23",
+    "image": "images/products/downy-ultra-liquid-fabric.webp",
+    "name": "Downy Ultra Liquid Fabric",
+    "rating": {
+      "stars":4.5,
+      "count": 199
+    },
+    "priceCents": 5915,
+    "keywords": [
+      "cleaning",
+      "bathroom"
+    ]
+  },
+  {
+    "id": "mbh87002-5323-405f-b7ce-57f7n4kdhwd23",
+    "image": "images/products/eco-friendly-poe-bubble-clear-umbrella-windproof-stylish.webp",
+    "name": "Eco-friendly Poe Bubble Clear Umbrella - Windproof & Stylish",
+    "rating": {
+      "stars":2.5,
+      "count": 300
+    },
+    "priceCents": 800,
+    "keywords": [
+      "women",
+      "cute",
+      "umbrella"
+    ]
+  }  
+
+
+  
+  
 ]
