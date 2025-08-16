@@ -60,3 +60,20 @@ export function calculateCartQuantity () {
   });
   return cartQuantity
 }
+
+export function changeCartQuantity (productId, quantity) {
+  if(!quantity){
+    return console.log('This is not a number');
+  }
+  if(quantity >= 0 && quantity < 1000){
+    console.log('working'); 
+    cart.forEach((cartItem) => {
+    if(cartItem.productId === productId){
+      cartItem.quantity = Number(quantity);
+      saveToStorage();
+    }
+    });
+  }
+  
+
+}

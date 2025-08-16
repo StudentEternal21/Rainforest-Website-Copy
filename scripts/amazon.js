@@ -1,10 +1,15 @@
-import { addToCart, calculateCartQuantity } from "../data/cart.js";
+import { addToCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
+import { updateCartQuantity } from "./utils/updateCartQuantity.js";
 
+/* Never ever export a function with a document.querySelector element to a js file
+ that is not inside the current document object as imports and exports run all the 
+ code inside the imported function even when just importing one function or variable 
+console.log("They are connected"); */
+ let cartQuantityElement = '.js-cart-quantity'
 
- 
-
+ updateCartQuantity(cartQuantityElement);
 
 
 let productsHTML = '';
@@ -64,13 +69,6 @@ products.forEach((product) => {
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
-
-function updateCartQuantity() {
-  const cartQuantity = calculateCartQuantity();
-  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-}
-
-
  
  
 document.querySelectorAll('.js-add-to-cart').forEach((button) => {
@@ -78,7 +76,7 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
   button.addEventListener('click',() => {
   const {productId} = button.dataset;
   addToCart(productId);
-  updateCartQuantity();
+  updateCartQuantity(cartQuantityElement);
   
     // This is for the added to cart visibility
   document.querySelector(`.js-added-to-cart${productId}`).classList.add('visible');
