@@ -4,19 +4,10 @@ import { updateCartQuantity } from '../utils/updateCartQuantity.js';
 import { formatCurrency } from '../utils/money.js';
 import { deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js';
 import { formatTime } from '../utils/formatTime.js';
-
-
-
-
-
-
-
+import { renderPaymentSummary } from './paymentSummary.js';
 
 
 export function renderOrderSummary () {
-
-
-
 
   let cartQuantityElement = '.js-cart-home-link';
   updateCartQuantity(cartQuantityElement);
@@ -129,6 +120,7 @@ export function renderOrderSummary () {
       removeFromCart(productId);
       document.querySelector(`.js-cart-item-container-${productId}`).remove();
       updateCartQuantity(cartQuantityElement);
+      renderPaymentSummary()
     });
 
   })
@@ -147,9 +139,14 @@ export function renderOrderSummary () {
 
       document.querySelector(`.js-save-link-${productId}`)
       .addEventListener('click',() => {
-
+        let quantity = quantityElement.value.trim();
         //This is where you will change the html later.
-        const quantity = Number(quantityElement.value)
+        if(quantity === ''){
+          return;
+        }
+
+        quantity = Number(quantity);
+        
         changeCartQuantity(productId, quantity)
         updateLink.classList.remove('remove');
         quantityElement.classList.remove('is-editing');
@@ -162,6 +159,7 @@ export function renderOrderSummary () {
           updateCartQuantity(cartQuantityElement);
         }
         quantityElement.value = '';
+        renderPaymentSummary();
       }); 
     });
   });
@@ -175,6 +173,7 @@ export function renderOrderSummary () {
         const {productId, deliveryOptionId} = element.dataset;
         updateDeliveryOption(productId, deliveryOptionId)
         renderOrderSummary(); 
+        renderPaymentSummary();
       })
     })
 
