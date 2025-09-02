@@ -23,7 +23,7 @@ export function addToCart(productId) {
 
   let matchingItem;
 
-  let quantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
+  let quantity = Number(document.querySelector(`.js-quantity-selector-${productId}`)?.value) || 1;
 
   cart.forEach((cartItem) => {
 
