@@ -13,7 +13,6 @@ export function renderOrderSummary () {
   updateCartQuantity(cartQuantityElement);
 
   let cartSummaryHTML = '';
-
   cart.forEach((cartItem) => {
   const productId = cartItem.productId
 
@@ -22,9 +21,9 @@ export function renderOrderSummary () {
   const deliveryOptionId = cartItem.deliveryOptionId;
 
   const deliveryOption = getDeliveryOption(deliveryOptionId)
-
-  const dateString = formatTime(deliveryOption);
-
+  let dateString = formatTime(deliveryOption);
+  
+  
   cartSummaryHTML+= `
       <div class="cart-item-container 
       js-cart-item-container-${matchingProduct.id}">
@@ -75,10 +74,18 @@ export function renderOrderSummary () {
 
   function deliveryOptionsHTML (matchingProduct, cartItem) {
     let html = ''
+    let currentDateString;
 
     deliveryOptions.forEach((deliveryOption) => {
-      const dateString = formatTime(deliveryOption)
-
+      
+      let dateString = formatTime(deliveryOption)
+      
+      if(currentDateString === dateString){
+        dateString =  'Not available';
+        console.log(currentDateString);
+        currentDateString = '';
+    }
+  currentDateString = dateString;
       const priceString = deliveryOption.priceCents 
       === 0
       ? 'FREE'
