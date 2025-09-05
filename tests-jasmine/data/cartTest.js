@@ -1,5 +1,5 @@
 import {addToCart, cart, loadFromStorage} from '../../data/cart.js';
-// This is the jasmine framework
+// This is the jasmine framework to make sure everything is okay
 describe('test suite: addToCart', () => {
   it('adds an existing product to the cart', () => {
     spyOn(localStorage, 'setItem');
