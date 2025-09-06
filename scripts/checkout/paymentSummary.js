@@ -69,11 +69,6 @@ export function renderPaymentSummary () {
   document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
 
 
-  // This is for the experiment of the day js
 
 }
 
-function isWeekend(date){
-  
-  
-}
