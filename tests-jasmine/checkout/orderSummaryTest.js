@@ -104,4 +104,19 @@ describe('test suite: renderOrderSummary', () => {
 
   });
 
+  it('updates the delivery options', () => {
+    document.querySelector(`.js-delivery-option-input-${3}`).click();
+    console.log('working');
+
+    expect(cart[0].deliveryOptionId).toEqual('3');
+
+    expect(
+      document.querySelector('.js-shipping-payment-summary').innerText
+    ).toContain('$14.98');
+
+    expect(
+      document.querySelector('.js-total-payment-summary').innerText
+    ).toContain('$63.50');
+  });
+
 });
