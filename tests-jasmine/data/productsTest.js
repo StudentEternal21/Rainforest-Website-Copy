@@ -1,11 +1,18 @@
-import {products} from "../../data/products.js";
+import {products, loadProducts} from "../../data/products.js";
 
 
 describe('test suite: Normal Products', () => {
-  const normalProduct = products[0];  
+  let normalProduct;
+  beforeAll((done) => {
+    loadProducts(() =>{
+      done();
+       normalProduct = products[0];
+    });
 
+  });
+  
   it('turns priceCents into the real price', () => {
-
+ 
     expect(normalProduct.getPrice()).toEqual('$10.90');
   });
 
@@ -21,7 +28,16 @@ describe('test suite: Normal Products', () => {
 });
 
 describe('test suite: Clothing Products', () => {
-  const normalClothing = products[2];
+
+  let normalClothing;
+  beforeAll((done) => {
+    loadProducts(() =>{
+      done();
+      normalClothing = products[2];
+    });
+
+  });
+  
 
   it('turns priceCents into the real price', () => {
 
