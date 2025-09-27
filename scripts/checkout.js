@@ -9,15 +9,23 @@ use the await feature which is basically the promise.all method which waits for 
 starting from the first await to the last. since it has an await method then you can just put the code
 that is supposed to be for the then below all the await functions removing the need for the then. */
 async function loadPage() {
+  try {
 
+    await loadProductsFetch();
 
-  await loadProductsFetch();
+    await new Promise((resolve, reject) => {
+      loadCart(() => {
 
-  await new Promise((resolve) => {
-    loadCart(() => {
-    resolve();
+      resolve();
+      
+      });
     });
-  });
+  } catch (error) {
+    console.log('Unexpected error. Please try again later.');
+  }
+
+
+  
 
   renderOrderSummary();
   renderPaymentSummary();
