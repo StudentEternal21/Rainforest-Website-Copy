@@ -1,7 +1,6 @@
 import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
-import { loadProducts, loadProductsFetch } from "../data/products.js";
-import { loadCart, loadCartFetch } from "../data/cart.js";
+import {  loadProductsFetch } from "../data/products.js";
 //import "../data/backend-practice.js";
 /*The async keyword basically wraps the function inside the argument of a promise function
 which returns a promise so you can use then after calling the async function. Or most importantly
@@ -12,8 +11,7 @@ async function loadPage() {
   try {
 
     await Promise.all([
-      loadProductsFetch(),
-      loadCartFetch()
+      loadProductsFetch()
     ]);
 
   } catch (error) {
@@ -29,6 +27,26 @@ async function loadPage() {
 }
 
 loadPage()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*The Promise class has another method called all which has an array as an argument
 with the values being promises. It works the same way with then that after all the promises resolve
 then it starts the then code block inside. */

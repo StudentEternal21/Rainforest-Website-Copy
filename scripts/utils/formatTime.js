@@ -21,3 +21,8 @@ export function formatTime (deliveryOption) {
     );
     return dateString;
 }
+
+export function formatOrderTime(date){
+  const orderDate = dayjs(date).format('MMM DD, YYYY');
+  return orderDate;
+}

@@ -1,9 +1,11 @@
 import { addToCart } from "../data/cart.js";
-import { products,loadProducts } from "../data/products.js";
+import { products, loadProductsFetch } from "../data/products.js";
 import  formatCurrency  from "./utils/money.js";
 import { updateCartQuantity } from "./utils/updateCartQuantity.js";
 
-loadProducts(renderProductsGrid);
+loadProductsFetch().then((response) => {
+  renderProductsGrid(); 
+});
 
 /* Never ever export a function with a document.querySelector element to a js file
  that is not inside the current document object as imports and exports run all the 

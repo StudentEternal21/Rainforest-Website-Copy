@@ -1,5 +1,5 @@
 import {formatCurrency} from "../scripts/utils/money.js";
-
+export let products = [];
 export function getProduct(productId){
   let matchingProduct;
 
@@ -59,53 +59,42 @@ export class Clothing extends Product {
   }
 }
 
-export class Appliance extends Product {
-  instructionsLink;
-  warrantyLink;
-
-  constructor(productDetails){
-    super(productDetails);
-    this.instructionsLink = productDetails.instructionsLink;
-    this.warrantyLink = productDetails.warrantyLink;
-  }
-
-  extraInfoHTML(){
-    return `
-    <a href = "${this.instructionsLink}" target="_blank">
-    Instructions
-    </a>
-
-    <a href = "${this.warrantyLink}" target="_blank">
-    Warranty
-    </a>
-    `
-  }
-}
 
 
-export let products = [];
 
-export function loadProductsFetch() {
- const promise = fetch(
-  'https://supersimplebackend.dev/products'
-).then((response) => {
-     return response.json();
-  }).then((productsData) => {
+export async function loadProductsFetch() {
+
+  try {
+    const productsData = await fetch(
+      'https://supersimplebackend.dev/products'
+    ).then((response) => {
+      return response.json();
+    });
+
     products = productsData.map((productDetails) => {
-      if (productDetails.type === 'clothing') {
-        return new Clothing(productDetails);
-      }
-      else if (productDetails.type === 'appliance'){
-        return new Appliance(productDetails);
-      }
-      return new Product(productDetails);
-
+        if (productDetails.type === 'clothing') {
+          return new Clothing(productDetails);
+        }
+        return new Product(productDetails);
       });
-      console.log('load products');  
-  }) .catch((error) => {
-    console.log('Unexpected error. Please try again later.');
-  }); 
-  return promise;
+  } catch(error) {
+    console.log('The products have not loaded. Please try again later.');
+    console.log(error);
+  }
+
+
+//  const promise = fetch(
+//   'https://supersimplebackend.dev/products'
+// ).then((response) => {
+//      return response.json();
+//   }).then((productsData) => {
+    
+//       });
+//       console.log('load products');  
+//   }) .catch((error) => {
+//     console.log('Unexpected error. Please try again later.');
+//   }); 
+//   return promise;
 
 }
 
@@ -119,9 +108,7 @@ export function loadProducts(fun) {
       if (productDetails.type === 'clothing') {
         return new Clothing(productDetails);
       }
-      else if (productDetails.type === 'appliance'){
-        return new Appliance(productDetails);
-      }
+
       return new Product(productDetails);
         });
       console.log('load products');
