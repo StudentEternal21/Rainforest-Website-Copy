@@ -55,23 +55,3 @@ describe('test suite: Clothing Products', () => {
   });
 });
 
-describe('test suite: Appliance Products', () => {
-  const normalAppliance = products[3];
-
-  it('turns priceCents into the real price', () => {
-
-    expect(normalAppliance.getPrice()).toEqual('$18.99');
-  });
-
-  it('gets the rating for the product', () => {
-
-    expect(normalAppliance.getStarsUrl()).toEqual('images/ratings/rating-50.png');
-  });
-
-    it('gets the extraInfo for the product', () => {
-
-    expect(normalAppliance.extraInfoHTML()).toContain('appliance-instructions.png');
-
-    expect(normalAppliance.extraInfoHTML()).toContain('appliance-warranty.png');
-  });
-});

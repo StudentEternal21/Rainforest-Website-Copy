@@ -1,7 +1,7 @@
 import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { loadProducts, loadProductsFetch } from "../data/products.js";
-import { loadCart } from "../data/cart.js";
+import { loadCart, loadCartFetch } from "../data/cart.js";
 //import "../data/backend-practice.js";
 /*The async keyword basically wraps the function inside the argument of a promise function
 which returns a promise so you can use then after calling the async function. Or most importantly
@@ -11,15 +11,11 @@ that is supposed to be for the then below all the await functions removing the n
 async function loadPage() {
   try {
 
-    await loadProductsFetch();
+    await Promise.all([
+      loadProductsFetch(),
+      loadCartFetch()
+    ]);
 
-    await new Promise((resolve, reject) => {
-      loadCart(() => {
-
-      resolve();
-      
-      });
-    });
   } catch (error) {
     console.log('Unexpected error. Please try again later.');
   }

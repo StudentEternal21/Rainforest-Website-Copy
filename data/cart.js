@@ -116,3 +116,21 @@ export function loadCart(fun) {
  xhr.open('GET', 'https://supersimplebackend.dev/cart');
  xhr.send();
 }
+
+export async function loadCartFetch() {
+  try {
+    const response = await fetch(
+      'https://supersimplebackend.dev/cart'
+    ).then((response) => {
+      return response.text();
+    });
+    console.log(response);
+
+  } catch (error) {
+    console.log('Unexpected error. Please try again later.');
+  }
+
+
+  
+
+}
